@@ -25,3 +25,47 @@ for (x=0; x<3;x++){
  imgMe.srcset=srcMe
 
 
+ const books = [
+    {
+      title: "Gödel, Escher, Bach",
+      author: "Douglas Hofstadter",
+      alreadyRead: false
+    },
+    {
+      title: "Sapiens: A Brief History of Humankind",
+      author: "Yuval Noah Harari",
+      alreadyRead: true
+    },
+    {
+      title: "A Short History of Nearly Everything",
+      author: "Bill Bryson",
+      alreadyRead: true
+    },
+    {
+      title: "A Life on our Planet",
+      author: "David Attenborough",
+      alreadyRead: true
+    },
+    {
+      title: "Cosmos",
+      author: "Carl Sagan",
+      alreadyRead: false
+    }
+  ];
+
+//   Iterate through the array of books. For each book, create a p element with the book title and author and append it to the page.
+// If you have read it, make the text color green. If you haven't, make the text color red.
+
+ for ( let i = 0; i < books.length; i++ ) {
+    const bookme = books[i];
+    const myParagraph = document.createElement("p");
+    myParagraph.innerText = "'"+bookme.title + "', author: "+bookme.author;
+    if(bookme.alreadyRead){
+        myParagraph.style.color = "green";
+    }else{
+        myParagraph.style.color = "red";
+    }
+    document.body.appendChild(myParagraph);
+ }
+
+

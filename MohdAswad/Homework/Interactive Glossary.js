@@ -982,7 +982,9 @@ userSelect.addEventListener("change", listenToUserSelect);
 function listenToUserSelect() {
   for (let i = 0; i < glossary.length; i++) {
     const glossaryme = glossary[i];
-    let result = glossaryme.definition.includes(userInput.value);
+    var classme = glossaryme.class.toString();
+    // console.log(glossaryme.class.toString());
+    let result = classme.includes(userSelect.value);
     if (result) {
       const myParagraphResult = document.createElement("h3");
       myParagraphResult.innerText =

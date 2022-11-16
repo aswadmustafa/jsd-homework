@@ -1005,5 +1005,57 @@ function listenToUserSelect() {
 // Fourth Step
 // Add tag functionality! At the top of the page, have checkboxes that have the tags stored in them. When the user clicks the tags, show all relevant terms!
 
+for (let i = 0; i < glossary.length; i++) {
+  const glossaryme = glossary[i];
+  val = glossaryme.tags;
+
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.name = "checkbox";
+  checkbox.value = val;
+  checkbox.id = "id";
+
+  var label = document.createElement("label");
+  label.htmlFor = "id";
+  label.appendChild(document.createTextNode(val));
+
+  container.appendChild(checkbox);
+  container.appendChild(label);
+}
+
+const checkboxMe = document.querySelector("input#id");
+checkboxMe.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    console.log("Checkbox is checked..");
+  } else {
+    console.log("Checkbox is not checked..");
+  }
+});
+
+// const userSelecttag = document.querySelector("input#id");
+// userSelecttag.addEventListener("change", listenToUserSelecttag);
+
+// function listenToUserSelecttag() {
+//   console.log("sss");
+//   for (let i = 0; i < glossary.length; i++) {
+//     const glossaryme = glossary[i];
+//     var classme = glossaryme.tags;
+//     // console.log(glossaryme.class.toString());
+//     let result = classme.includes(userSelecttag.value);
+//     if (result) {
+//       const myParagraphResult = document.createElement("h3");
+//       myParagraphResult.innerText =
+//         "term : " +
+//         glossaryme.term +
+//         "', class: " +
+//         glossaryme.class +
+//         "', definition: " +
+//         glossaryme.definition +
+//         "', tags: " +
+//         glossaryme.tags;
+//       document.body.appendChild(myParagraphResult);
+//     }
+//   }
+// }
 // Bonus
 // Make the search, filter and tag functionality work together!

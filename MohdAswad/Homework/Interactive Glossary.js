@@ -956,21 +956,6 @@ userInput.addEventListener("change", listenToButtonClick);
 
 // Third Step
 // Add filter functionality! At the top of the page, add a dropdown menu with all of the class names. When the user selects one of those classes, show all of the terms from that particular class.
-// var select = document.createElement("select");
-// for (let i = 0; i < glossary.length; i++) {
-//   const glossaryme = glossary[i];
-//   var val = glossaryme.class;
-//   var option = document.createElement("option");
-//   option.value = val;
-//   //   option.text = val.charAt(0).toUpperCase() + val.slice(1);
-//   option.text == val;
-//   select.appendChild(option);
-// }
-// var values;
-// for (let i = 0; i < glossary.length; i++) {
-//   const glossaryme = glossary[i];
-//   values = value.appendChild(glossaryme.class);
-// }
 
 var select = document.createElement("select");
 select.name = "filter";
@@ -983,7 +968,6 @@ for (let i = 0; i < glossary.length; i++) {
   var option = document.createElement("option");
   option.value = val;
   option.text = val;
-  //option.text = val.charAt(0).toUpperCase() + val.slice(1);
   select.appendChild(option);
 }
 
@@ -992,7 +976,28 @@ label.innerHTML = "Choose your filter: ";
 label.htmlFor = "filter";
 
 document.getElementById("container").appendChild(label).appendChild(select);
+const userSelect = document.querySelector("select");
+userSelect.addEventListener("change", listenToUserSelect);
 
+function listenToUserSelect() {
+  for (let i = 0; i < glossary.length; i++) {
+    const glossaryme = glossary[i];
+    let result = glossaryme.definition.includes(userInput.value);
+    if (result) {
+      const myParagraphResult = document.createElement("h3");
+      myParagraphResult.innerText =
+        "term : " +
+        glossaryme.term +
+        "', class: " +
+        glossaryme.class +
+        "', definition: " +
+        glossaryme.definition +
+        "', tags: " +
+        glossaryme.tags;
+      document.body.appendChild(myParagraphResult);
+    }
+  }
+}
 // Bonus: Make the search and filter functionality work together!
 
 // Fourth Step
